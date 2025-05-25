@@ -21,6 +21,36 @@ function updateAvailablePoints() {
     document.getElementById("availablePoints").innerText = available;
 }
 
+function enforceStatLimits(e) {
+    const level = parseInt(document.getElementById("levelInput").value) || 1;
+    const maxPoints = level * 3;
+
+    const statLimits = {
+        str: 200,
+        dex: 200,
+        acc: 50,
+        pen: 50
+    };
+
+    const stats = getStatValues();
+    const total = getTotalUsedPoints(stats);
+    const input = e.target;
+    const stat = input.id;
+
+    // 제한된 스탯 범위 넘지 않도록
+    if (statLimits[stat] !== undefined && stats[stat] > statLimits[stat]) {
+        input.value = statLimits[stat];
+    }
+
+    // 전체 포인트 초과 시 현재 입력값 줄이기
+    if (total > maxPoints) {
+        const over = total - maxPoints;
+        input.value = Math.max(0, stats[stat] - over);
+    }
+
+    updateAvailablePoints();
+}
+
 function calculateStats() {
     const stats = getStatValues();
 
@@ -44,9 +74,9 @@ function calculateStats() {
     `;
 }
 
-// 포인트 자동 업데이트
+// 이벤트 연결
 document.querySelectorAll("#str, #dex, #vit, #acc, #pen, #levelInput").forEach(el => {
-    el.addEventListener("input", updateAvailablePoints);
+    el.addEventListener("input", enforceStatLimits);
 });
 
 // 초기화
