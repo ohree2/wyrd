@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>스탯 시뮬레이터</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>스탯 시뮬레이터</h1>
+
+        <div id="authSection">
+            <button onclick="goToPage('login.html')">로그인</button>
+            <button onclick="goToPage('signup.html')">회원가입</button>
+            <button onclick="goToPage('guest.html')">비회원으로 시작</button>
+        </div>
+    </div>
+    <script>
+        function goToPage(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>
