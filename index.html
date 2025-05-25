@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>스탯 시뮬레이터</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>스탯 시뮬레이터</h1>
+
+        <p>직업을 선택하세요:</p>
+        <select id="jobSelect">
+            <option value="">직업 선택</option>
+            <option>어쌔신</option>
+            <option>프리스트</option>
+            <option>메지션</option>
+            <option>레인저</option>
+            <option>나이트</option>
+        </select>
+
+        <p>레벨을 입력하세요:</p>
+        <input type="number" id="levelInput" value="1" min="1" max="100">
+        <p>사용 가능한 스탯 포인트: <span id="availablePoints">3</span></p>
+
+        <div id="statInputs">
+            <label>근력: <input type="number" id="str" value="0" min="0" max="200"></label><br>
+            <label>민첩: <input type="number" id="dex" value="0" min="0" max="200"></label><br>
+            <label>맷집: <input type="number" id="vit" value="0" min="0"></label><br>
+            <label>명중: <input type="number" id="acc" value="0" min="0" max="50"></label><br>
+            <label>관통: <input type="number" id="pen" value="0" min="0" max="50"></label>
+        </div>
+
+        <button onclick="calculateStats()">능력치 계산</button>
+
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
